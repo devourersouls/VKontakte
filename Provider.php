@@ -82,7 +82,7 @@ class Provider extends AbstractProvider implements ProviderInterface
             'nickname' => Arr::get($user, 'screen_name'),
             'name'     => trim(Arr::get($user, 'first_name').' '.Arr::get($user, 'last_name')),
             'email'    => Arr::get($user, 'email'),
-            'avatar'   => Arr::get($user, 'photo_max'),
+            'avatar'   => preg_replace('/\?.*$/', '', Arr::get($user, 'photo')),
         ]);
     }
 
